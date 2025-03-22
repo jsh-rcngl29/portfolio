@@ -104,3 +104,22 @@ document.addEventListener('alpine:init', () => {
         
     }));
 });
+
+
+// Create an Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+        
+    entries.forEach(entry => {
+        const targets_childs = entry.target.querySelectorAll('.floating');
+
+        for (let i = 0; i < targets_childs.length; i++) {
+            const element = targets_childs[i];
+                if (entry.isIntersecting) {
+                    element.classList.add('float');
+                }else{
+                    element.classList.remove('float');
+                }
+        }
+
+    });
+},{ threshold: 0.2 });
