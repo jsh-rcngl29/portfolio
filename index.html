@@ -13,6 +13,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
     
     <link rel="stylesheet" href="public/css/style.css">
+    <script src="public/js/script.js"></script>
 
    
     <style type="text/tailwindcss">
@@ -67,7 +68,6 @@
         .section-black {
             @apply 
                 py-20 
-                /* px-10  */
                 /* dark */
                 dark:bg-gradient-to-r 
                 dark:from-gray-800 
@@ -78,7 +78,7 @@
                 from-gray-100 
                 via-gray-200 
                 to-gray-500 
-                /* dark:to-gray-100 */
+
                 dark:text-gray-300
                 text-gray-700;
         }
@@ -152,7 +152,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
                     </svg>
-                    <span class="ml-1 text-sm" title="v1.0.04">Php Web Developer</span>
+                    <span class="ml-1 text-sm">Php Web Developer</span>
                 </div>
                 <!-- Theme Switcher Dropdown -->
                 <div class="relative">
@@ -239,13 +239,9 @@
 
                 <div class="mb-8 block ">
                     <h4 class="text-4xl font-bold ">Skills</h4>
-                    <!-- <h2>Skills</h2> -->
-                    <!-- <h4 class="text-lg font-bold">Programming Languages</h4> -->
-                    <!-- <small class="dark:text-gray-400 text-gray-600 text-[1rem] italic">PHP, JavaScript, C#</small> -->
                     <p class="mt-4 text-lg">
                         In years of experience, I have developed a strong foundation in programming languages in web development.
                         I am confident in my ability to write clean, efficient, and scalable code using these languages.
-                        <!-- I am proficient in PHP, JavaScript, and Python. I have experience in developing web applications using these languages. -->
                     </p>
                 </div>
 
@@ -328,104 +324,6 @@
 
         </section>
 
-
-
-        <!-- About Section -->
-        <!-- <section id="about" class="section-black section">
-            <div class="container mx-auto">
-                <h2 class="text-4xl font-bold mb-6 text-center">About Me</h2>
-
-                <p>
-                    I am a passionate web developer with expertise in PHP, JavaScript, MySQL, and frameworks like CodeIgniter and Laravel. 
-                    I specialize in creating modern, scalable, and user-friendly web applications that solve real-world problems.
-                </p>
-            </div>
-        </section> -->
-
-        <!-- Skills Section -->
-        <!-- <section id="skills" class="section-black section">
-            <div class="container mx-auto">
-                <h2 class="text-4xl font-bold mb-6 text-center">Skills</h2>
-
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Programming Languages, Database, Libraries and Framworks</h3>
-                </div>
-                <div class="grid grid-cols-3 md:grid-cols-4 gap-6">
-                    <div class="text-center">
-                        <p class="font-semibold">PHP</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-5/5"></div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <p class="font-semibold">MySQL</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <p class="font-semibold">Boostrap</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <p class="font-semibold">JQuery</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <p class="font-semibold">JavaScript</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/4"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="text-center">
-                        <p class="font-semibold">CSS</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <p class="font-semibold">Tailwindcss</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <p class="font-semibold">Laravel</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/5"></div>
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <p class="font-semibold">NodeJS</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/5"></div>
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <p class="font-semibold">NextJS</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/5"></div>
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <p class="font-semibold">React</p>
-                        <div class="bg-gray-700 h-2 rounded-full">
-                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/5"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
        
         <!-- Projects Section -->
         <section id="projects" class="section-black section">
@@ -474,12 +372,9 @@
         </section>
 
 
-
-
         <!-- Contact Me Section -->
         <section id="contact" class="section-red section">
             <div class="container mx-auto mt-12">
-                <!-- <h2 class="text-4xl font-bold mb-6 text-center">Contact Me</h2> -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <!-- Left Side: Contact Information -->
                     <div class="space-y-4">
@@ -540,7 +435,7 @@
         <footer class="section-red section">
             <div class="container mx-auto">
                 <div class="flex justify-between items-center">
-                    <span class="text-[8pt] text-gray-400"> Portfolio v1.0.05</span>
+                    <span class="text-[8pt] text-gray-400"> Portfolio v1.0.06</span>
                 </div>
             </div>
         </footer>
@@ -549,144 +444,5 @@
 
 
 
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('carousel', () => ({
-                activeSlide: 0,
-                projects: [
-                    { name: 'Project Name 1', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'PHP, JavaScript', database: 'MySQL', status: 'Up', statusColor: 'text-green-400' },
-                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
-                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
-                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
-                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
-                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
-                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
-                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
-                    { name: 'Project Name 3', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Java, Spring Boot', database: 'MongoDB', status: 'Down', statusColor: 'text-[var(--theme-color-400)] ' }
-                ],
-        
-                
-                scrollToSlide(index) {
-                    this.activeSlide = index;
-                    const carousel = this.$refs.carousel;
-                    const itemWidth = carousel.children[index].offsetWidth; // Width of each slide
-                    const containerWidth = carousel.offsetWidth; // Container width
-    
-                    // Scroll to the calculated position to center the clicked item
-                    const scrollLeft = itemWidth * index - (containerWidth / 2) + (itemWidth / 2);
-    
-                    const xscrollLeft = (index == this.projects.length - 1) ? scrollLeft  + itemWidth : scrollLeft
-
-                    // Scroll to the calculated position
-                    carousel.scrollTo({
-                        left: xscrollLeft,
-                        behavior: 'smooth'
-                    });
-                },
-        
-                updateActiveSlide() {
-                    const carousel = this.$refs.carousel;
-                    const items = carousel.children;
-                    const containerWidth = carousel.offsetWidth;
-        
-                    let closestIndex = 0;
-                    let closestDistance = Infinity;
-        
-                    // Loop through the items to determine the closest item to the center
-                    Array.from(items).forEach((item, index) => {
-                        const itemLeft = item.offsetLeft;
-                        const itemRight = itemLeft + item.offsetWidth;
-                        const itemCenter = (itemLeft + itemRight) / 2;
-                        const containerCenter = containerWidth / 2;
-                        const distance = Math.abs(itemCenter - containerCenter);
-        
-                        if (distance < closestDistance) {
-                            closestDistance = distance;
-                            closestIndex = index;
-                        }
-                    });
-        
-                    // Update active slide based on closest item
-                    this.activeSlide = closestIndex;
-                }
-            }));
-        });
-
-    </script>
-    
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('themeSwitcher', () => ({
-                darkMode: localStorage.getItem('darkMode') || 'dark', // Default to light mode
-
-                theme: 'red', // Default theme
-                themes:[
-                    { name: 'Rose', value: 'rose', color: '#9f1239' },
-                    { name: 'Pink', value: 'pink', color: '#9d174d' },
-                    { name: 'Fuchsia', value: 'fuchsia', color: '#86198f' },
-                    { name: 'Purple', value: 'purple', color: '#6b21a8' },
-                    { name: 'Violet', value: 'violet', color: '#5b21b6' },
-                    { name: 'Indigo', value: 'indigo', color: '#3730a3' },
-                    { name: 'Blue', value: 'blue', color: '#1e40af' },
-                    { name: 'Cyan', value: 'cyan', color: '#155e75' },
-                    { name: 'Teal', value: 'teal', color: '#115e59' },
-                    { name: 'Emerald', value: 'emerald', color: '#065f46' },
-                    { name: 'Green', value: 'green', color: '#166534' },
-                    { name: 'Lime', value: 'lime', color: '#3f6212' },
-                    { name: 'Yellow', value: 'yellow', color: '#854d0e' },
-                    { name: 'Amber', value: 'amber', color: '#92400e' },
-                    { name: 'Orange', value: 'orange', color: '#9a3412' },
-                    { name: 'Red', value: 'red', color: '#991b1b' },
-                    { name: 'Neutral', value: 'neutral', color: '#262626' },
-                    { name: 'Gray', value: 'gray', color: '#1f2937' },
-                    { name: 'Slate', value: 'slate', color: '#1e293b' }
-                ],
-
-                dropdownOpen: false,
-
-                toggleDropdown() {
-                    this.dropdownOpen = !this.dropdownOpen;
-                },
-
-                setTheme(color) {
-                    this.theme = color;
-                    document.documentElement.setAttribute('data-theme', color);
-                    localStorage.setItem('theme', color);
-                },
-
-                getTheme (){
-                    const settedTheme = localStorage.getItem('theme') ? this.theme = localStorage.getItem('theme') : this.theme ;
-
-                    this.themes.map((theme) => {
-                        if(theme.value == settedTheme){
-                            document.documentElement.setAttribute('data-theme', settedTheme);
-                        }
-                    })
-                },
-
-
-                toggleDarkMode() {
-                    this.darkMode = this.darkMode === 'light' ? 'dark' : 'light';
-                    localStorage.setItem('darkMode', this.darkMode); // Save preference to localStorage
-                    document.documentElement.classList.toggle('dark');
-                },
-
-                getMode(){
-                    const settedMode = localStorage.getItem('darkMode') ? this.darkMode = localStorage.getItem('darkMode') : this.darkMode = 'dark';
-                    if (settedMode == 'dark') {
-                        console.log('dark');
-                        
-                        document.documentElement.classList.add('dark');
-                    }else{
-                        console.log('light');
-                        
-                        document.documentElement.classList.remove('dark');
-                    }
-                }
-
-                
-            }));
-        });
-    </script>
 </body>
 </html>
