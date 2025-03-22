@@ -142,7 +142,7 @@
             --animate-wiggle: wiggle 1s ease-in-out infinite;
             --animate-float-up: floatUpOpacity .5s ease-in-out ;
 
-            @keyframes wiggle {
+            @keyframes wiggle {   
                 0%,
                 100% {
                 transform: rotate(-3deg);
@@ -161,8 +161,8 @@
                     transform: translateY(0);
                     opacity: 1;
                 }
-                
             }
+          
         }
 
         .floating{
@@ -174,6 +174,7 @@
             transform: translateY(0);
             opacity: 1;
         }
+
     </style>
      
 </head>
@@ -230,12 +231,20 @@
 
         <!-- Hero Section -->
         <div class="hero section-red section">
-            <div class="container h-80 ">
-                <h1 class="text-5xl font-bold mb-4 mt-8">Hi, I'm Joshua</h1>
-                <p class="text-xl mb-6">
+            <div class="container h-auto pb-10 ">
+                <h1 class="text-6xl md:text-8xl font-bold mb-4 mt-8">Hi, <br>
+                    <span class="">I'm </span> <span class="underline decoration-[var(--theme-color-500)] myName">Joshua</span>
+                </h1>
+                <p class="text-xl mb-6 text-justify">
                     A Passionate <span class="font-semibold dark:text-[var(--theme-color-400)] text-[var(--theme-color-100)] ">PHP Web Developer</span> 
-                    Crafting Modern and Scalable Web Solutions
-                    <br>!! move About Me Content Here and add more  detatails about my self 
+                    <!-- <br class="md:hidden"> -->
+                    Crafting Modern,
+                    
+                    Scalable, and User-Centric Web Solutions 
+                    <br class="hidden md:block"> 
+                    with a Focus on Performance and Best Practices.
+                    <!-- crafting modern, scalable, and user-friendly web solutions, with a focus on clean code, responsive design, and optimized performance -->
+                    <!-- <br>!! move About Me Content Here and add more  detatails about my self  -->
                 </p>
                 <a href="#projects" class="btn">
                     View My Work
@@ -244,24 +253,47 @@
         </div>
 
 
+        <!-- 
+            About me Section 
+
+            I am constantly looking for opportunities to apply my skills and knowledge to real-world projects. 
+            My educational background has provided me with a solid foundation in web development, databases, 
+            and programming languages, including PHP. 
+            Furthermore, I have gained practical experience through hands-on projects, both independently 
+            and as part of collaborative teams.
+        -->
+
+        <section class="section section-black" id="about">
+            <div class="container mx-auto ">
+                <h4 class="text-3xl font-bold mb-6 text-start ">About Me</h4>
+                <p class="mt-4 text-lg  md:text-start text-justify floating">
+                    I am constantly looking for opportunities to apply my skills and knowledge to real-world projects. 
+                    My years of experience has provided me with a solid foundation in web development, databases, 
+                    and programming languages, including PHP. 
+                    Furthermore, I have gained practical experience through hands-on projects, both independently 
+                    and as part of collaborative teams.
+                </p>
+            </div>
+        </section>
+
          <!-- Work Experience Section -->
          <section id="work-experience" class="section-black section">
             <div class="container mx-auto">
-                <h4 class="text-2xl font-bold mb-6 text-start">Work Experience</h4>
-                <h2>Companies I have worked for in the past.</h2>
+                <h4 class="text-3xl font-bold mb-6 text-start">Work Experience</h4>
+                <h4 class="text-2xl font-bold">Companies I have worked for in the past.</h4>
                 <div class="grid md:grid-cols-2  space-y-9 pt-5 gap-9 floating">
                     <div>
-                        <h3 class="text-3xl font-bold">Software Engineer L3</h3>
+                        <h3 class="text-xl font-bold">Software Engineer L3</h3>
                         <p class="dark:text-gray-400 text-gray-600 text-sm italic">Equitable Computer Services, Inc, <br> March 21, 2022 to Current</p>
-                        <p class="mt-4 text-lg">
+                        <p class="mt-4 text-lg md:text-start text-justify">
                             I am currently working as a Senior/Lead Developer and responsible for developing and maintaining web applications for clients,
                             guiding and supporting our teams junior developers.
                         </p>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-bold">Back-End Developer</h3>
+                        <h3 class="text-xl font-bold">Back-End Developer</h3>
                         <p class="dark:text-gray-400 text-gray-600 text-sm italic">Gleent Oncorporation <br> August 2021 to November 2021</p>
-                        <p class="mt-4 text-lg">
+                        <p class="mt-4 text-lg  md:text-start text-justify">
                             I've worked on project that involves developing and maintaining the back-end of web applications.
                         </p>
                     </div>
@@ -269,20 +301,22 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section class="section-black section scroll-float" id="skills">
 
-            <div class="container mx-auto floating">
+
+        <!-- Skills Section -->
+        <section class="section-black section " id="skills">
+
+            <div class="container mx-auto ">
 
                 <div class="mb-8 block ">
-                    <h4 class="text-4xl font-bold ">Skills</h4>
-                    <p class="mt-4 text-lg">
-                        In years of experience, I have developed a strong foundation in programming languages in web development.
-                        I am confident in my ability to write clean, efficient, and scalable code using these languages.
+                    <h4 class="text-3xl font-bold ">Skillsets</h4>
+                    <p class="mt-4 text-lg  md:text-start text-justify floating">
+                        In years of experience, I have developed a strong foundation in web development methods. 
+                        I am confident in my ability to design, build, and deliver efficient and user-friendly web applications.
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-3 ">
+                <div class="grid md:grid-cols-2 gap-3 floating ">
                     <div>
 
                         <div class="mb-8  hover:text-[var(--theme-color-500)] ">
@@ -296,7 +330,7 @@
                                 </h4>
                                 <h4 class="text-2xl font-bold">Maintainability</h4>
                             </div>
-                            <p class="text-lg">
+                            <p class="text-lg  md:text-start text-justify">
                                 Working on project that involves developing and maintaining the back-end of web applications.
                             </p>
                         </div>
@@ -311,7 +345,7 @@
                                 </h4>
                                 <h4 class="text-2xl font-bold">Dynamic Web Application</h4>
                             </div>
-                            <p class="text-lg">
+                            <p class="text-lg  md:text-start text-justify">
                                 Building interactive and scalable web applications that deliver personalized user experiences.
                             </p>
                         </div>
@@ -329,7 +363,7 @@
                                 </h4>
                                 <h4 class="text-2xl font-bold">Clean and Reusable Coding</h4>
                             </div>
-                            <p class="text-lg">
+                            <p class="text-lg  md:text-start text-justify">
                                 Writing clean, efficient, and reusable code to ensure maintainability and scalability of web applications.
                             </p>
                         </div>
@@ -345,7 +379,7 @@
                                 </h4>
                                 <h4 class="text-2xl font-bold">Optimized Performance</h4>
                             </div>
-                            <p class="text-lg">
+                            <p class="text-lg  md:text-start text-justify">
                                 Developing web applications with a focus on speed, efficiency, and optimized performance to enhance user satisfaction and engagement.
                             </p>
                         </div>
@@ -363,12 +397,12 @@
 
        
         <!-- Projects Section -->
-        <section id="projects" class="section-black section scroll-float">
-            <div class="container mx-auto floating">
+        <section id="projects" class="section-black section ">
+            <div class="container mx-auto ">
                 <!-- <h2 class="text-4xl font-bold mb-6 text-center">Projects</h2> -->
-                <h4 class="text-2xl font-bold mb-6 text-start">Projects</h4>
-                <h2>Projects that I have worked in the past.</h2>
-                <div x-data="carousel" class="relative">
+                <h4 class="text-3xl font-bold mb-6 text-start">Projects</h4>
+                <h4 class="floating text-2xl font-bold ">Projects that I have worked in the past.</h4>
+                <div x-data="carousel" class="relative floating">
                     <!-- Carousel Wrapper -->
                     <div 
                         class="flex overflow-x-auto snap-x snap-mandatory space-x-6 scrollbar-hide "
@@ -415,12 +449,12 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <!-- Left Side: Contact Information -->
                     <div class="space-y-4">
-                        <h3 class="text-2xl font-semibold">Get in Touch</h3>
-                        <p class="text-lg">If you have any questions or want to work together, feel free to reach out!</p>
-                        <div class="text-sm">
-                            <p  class="text-sm"><strong>Email:</strong> jsh24.rcngl@gmail.com</p>
-                            <p  class="text-sm"><strong>Phone:</strong> (+63)946-995-0709</p>
-                            <p  class="text-sm"><strong>Location:</strong> San Carlos City, Pangasinan</p>
+                        <h3 class="text-3xl font-semibold">Get in Touch</h3>
+                        <p class="text-xl">If you have any questions or want to work together, feel free to reach out!</p>
+                        <div class="text-base text-gray-300">
+                            <p  class="text-lgz"><strong>Email:</strong> jsh24.rcngl@gmail.com</p>
+                            <p  class="text-lgz"><strong>Phone:</strong> (+63)946-995-0709</p>
+                            <p  class="text-lgz"><strong>Location:</strong> San Carlos City, Pangasinan</p>
                         </div>
                         <div>
                             <h4 class="text-xl font-semibold mt-4 mb-1">Follow Me</h4>
@@ -448,15 +482,15 @@
                     <div>
                         <form action="#" method="POST" class="space-y-6">
                             <div>
-                                <label for="name" class="block text-sm font-medium">Name</label>
+                                <label for="name" class="block text-base font-medium">Name</label>
                                 <input type="text" id="name" name="name" class="w-full p-2 rounded dark:bg-gray-800 bg-gray-700 text-[var(--theme-color-400)] " autocomplete="off" required>
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium">Email</label>
+                                <label for="email" class="block text-base font-medium">Email</label>
                                 <input type="email" id="email" name="email" class="w-full p-2 rounded dark:bg-gray-800 bg-gray-700 text-[var(--theme-color-400)] " autocomplete="off" required>
                             </div>
                             <div>
-                                <label for="message" class="block text-sm font-medium">Message</label>
+                                <label for="message" class="block text-base font-medium">Message</label>
                                 <textarea id="message" name="message" rows="4" class="w-full p-2 rounded dark:bg-gray-800 bg-gray-700 text-[var(--theme-color-400)] " autocomplete="off" required></textarea>
                             </div>
                             <button type="submit" class="btn">Send Message</button>
@@ -486,6 +520,7 @@
         observer.observe(document.querySelector('#skills'));
         observer.observe(document.querySelector('#work-experience'));
         observer.observe(document.querySelector('#projects'));
+        observer.observe(document.querySelector('#about'));
 
     </script>
 
