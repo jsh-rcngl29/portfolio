@@ -137,11 +137,48 @@
         .scrollbar-hide::-webkit-scrollbar {
             display: none; /* Chrome, Safari, and Opera */   
         }  
+
+        @theme {
+            --animate-wiggle: wiggle 1s ease-in-out infinite;
+            --animate-float-up: floatUpOpacity .5s ease-in-out ;
+
+            @keyframes wiggle {
+                0%,
+                100% {
+                transform: rotate(-3deg);
+                }
+                50% {
+                transform: rotate(3deg);
+                }
+            }
+
+            @keyframes floatUpOpacity {
+                0% {
+                    transform: translateY(10px);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+                
+            }
+        }
+
+        .floating{
+            transform: translateY(10px);
+            opacity: 0;
+            transition:  all .5s ease-in-out;
+        }
+        .floating.float{
+            transform: translateY(0);
+            opacity: 1;
+        }
     </style>
      
 </head>
 <body :class="theme" class=" mulish"   x-init="getMode()" >
-    <div class="min-h-screen max-h-screen mt-0">
+    <div class="min-h-screen max-h-screen mt-0" id="mainDiv">
         <!-- Navbar -->
         <nav class="navbar">
             <div class="container flex justify-between items-center">
@@ -152,7 +189,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
                     </svg>
-                    <span class="ml-1 text-sm">Php Web Developer</span>
+                    <span class="ml-1 text-sm animate-float-up">Php Web Developer</span>
                 </div>
                 <!-- Theme Switcher Dropdown -->
                 <div class="relative">
@@ -212,7 +249,7 @@
             <div class="container mx-auto">
                 <h4 class="text-2xl font-bold mb-6 text-start">Work Experience</h4>
                 <h2>Companies I have worked for in the past.</h2>
-                <div class="grid md:grid-cols-2  space-y-9 pt-5 gap-9">
+                <div class="grid md:grid-cols-2  space-y-9 pt-5 gap-9 floating">
                     <div>
                         <h3 class="text-3xl font-bold">Software Engineer L3</h3>
                         <p class="dark:text-gray-400 text-gray-600 text-sm italic">Equitable Computer Services, Inc, <br> March 21, 2022 to Current</p>
@@ -233,9 +270,9 @@
         </section>
 
         <!-- Skills Section -->
-        <section class="section-black section">
+        <section class="section-black section scroll-float" id="skills">
 
-            <div class="container mx-auto">
+            <div class="container mx-auto floating">
 
                 <div class="mb-8 block ">
                     <h4 class="text-4xl font-bold ">Skills</h4>
@@ -248,7 +285,7 @@
                 <div class="grid md:grid-cols-2 gap-3 ">
                     <div>
 
-                        <div class="mb-8  hover:text-[var(--theme-color-500)]">
+                        <div class="mb-8  hover:text-[var(--theme-color-500)] ">
                             <div class="flex space-x-2 md:block">
                                 <h4 class="text-4xl font-bold mb-6 text-start">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9">
@@ -264,7 +301,7 @@
                             </p>
                         </div>
 
-                        <div class="mb-4 hover:text-[var(--theme-color-500)]">
+                        <div class="mb-4 hover:text-[var(--theme-color-500)] ">
                             <div class="flex space-x-2 md:block">
                                 <h4 class="text-4xl font-bold mb-6 text-start ">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9">
@@ -283,7 +320,7 @@
 
                     <div>
 
-                        <div class="mb-8 hover:text-[var(--theme-color-500)]">
+                        <div class="mb-8 hover:text-[var(--theme-color-500)] ">
                             <div class="flex space-x-2 md:block">
                                 <h4 class="text-4xl font-bold mb-6 text-start ">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9">
@@ -298,7 +335,7 @@
                         </div>
 
 
-                        <div class="mb-4 hover:text-[var(--theme-color-500)]">
+                        <div class="mb-4 hover:text-[var(--theme-color-500)] ">
                             <div class="flex space-x-2 md:block">
                                 <h4 class="text-4xl font-bold mb-6 text-start ">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9">
@@ -326,15 +363,15 @@
 
        
         <!-- Projects Section -->
-        <section id="projects" class="section-black section">
-            <div class="container mx-auto">
+        <section id="projects" class="section-black section scroll-float">
+            <div class="container mx-auto floating">
                 <!-- <h2 class="text-4xl font-bold mb-6 text-center">Projects</h2> -->
                 <h4 class="text-2xl font-bold mb-6 text-start">Projects</h4>
                 <h2>Projects that I have worked in the past.</h2>
                 <div x-data="carousel" class="relative">
                     <!-- Carousel Wrapper -->
                     <div 
-                        class="flex overflow-x-auto snap-x snap-mandatory space-x-6 scrollbar-hide"
+                        class="flex overflow-x-auto snap-x snap-mandatory space-x-6 scrollbar-hide "
                         x-ref="carousel"
                     >
                         <!-- Loop through the projects and render them -->
@@ -379,11 +416,11 @@
                     <!-- Left Side: Contact Information -->
                     <div class="space-y-4">
                         <h3 class="text-2xl font-semibold">Get in Touch</h3>
-                        <p>If you have any questions or want to work together, feel free to reach out!</p>
-                        <div>
-                            <p><strong>Email:</strong> jsh24.rcngl@gmail.com</p>
-                            <p><strong>Phone:</strong> (+63)946-995-0709</p>
-                            <p><strong>Location:</strong> San Carlos City, Pangasinan</p>
+                        <p class="text-lg">If you have any questions or want to work together, feel free to reach out!</p>
+                        <div class="text-sm">
+                            <p  class="text-sm"><strong>Email:</strong> jsh24.rcngl@gmail.com</p>
+                            <p  class="text-sm"><strong>Phone:</strong> (+63)946-995-0709</p>
+                            <p  class="text-sm"><strong>Location:</strong> San Carlos City, Pangasinan</p>
                         </div>
                         <div>
                             <h4 class="text-xl font-semibold mt-4 mb-1">Follow Me</h4>
@@ -435,7 +472,7 @@
         <footer class="section-red section">
             <div class="container mx-auto">
                 <div class="flex justify-between items-center">
-                    <span class="text-[8pt] text-gray-400"> Portfolio v1.0.06</span>
+                    <span class="text-[8pt] text-gray-400"> Portfolio v1.0.07</span>
                 </div>
             </div>
         </footer>
@@ -443,6 +480,14 @@
     </div>
 
 
+    <script>
+
+        // Start observing the sections
+        observer.observe(document.querySelector('#skills'));
+        observer.observe(document.querySelector('#work-experience'));
+        observer.observe(document.querySelector('#projects'));
+
+    </script>
 
 </body>
 </html>
