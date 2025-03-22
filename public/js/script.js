@@ -1,6 +1,7 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('carousel', () => ({
         activeSlide: 0,
+        // Test projects
         projects: [
             { name: 'Project Name 1', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'PHP, JavaScript', database: 'MySQL', status: 'Up', statusColor: 'text-green-400' },
             { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
@@ -20,9 +21,10 @@ document.addEventListener('alpine:init', () => {
             const itemWidth = carousel.children[index].offsetWidth; // Width of each slide
             const containerWidth = carousel.offsetWidth; // Container width
 
-            // Scroll to the calculated position to center the clicked item
+            // Scroll to the calculated position 
             const scrollLeft = itemWidth * index - (containerWidth / 2) + (itemWidth / 2);
-
+            
+            // If last item
             const xscrollLeft = (index == this.projects.length - 1) ? scrollLeft  + itemWidth : scrollLeft
 
             // Scroll to the calculated position
@@ -30,32 +32,6 @@ document.addEventListener('alpine:init', () => {
                 left: xscrollLeft,
                 behavior: 'smooth'
             });
-        },
-
-        updateActiveSlide() {
-            const carousel = this.$refs.carousel;
-            const items = carousel.children;
-            const containerWidth = carousel.offsetWidth;
-
-            let closestIndex = 0;
-            let closestDistance = Infinity;
-
-            // Loop through the items to determine the closest item to the center
-            Array.from(items).forEach((item, index) => {
-                const itemLeft = item.offsetLeft;
-                const itemRight = itemLeft + item.offsetWidth;
-                const itemCenter = (itemLeft + itemRight) / 2;
-                const containerCenter = containerWidth / 2;
-                const distance = Math.abs(itemCenter - containerCenter);
-
-                if (distance < closestDistance) {
-                    closestDistance = distance;
-                    closestIndex = index;
-                }
-            });
-
-            // Update active slide based on closest item
-            this.activeSlide = closestIndex;
         }
     }));
 });
@@ -63,7 +39,7 @@ document.addEventListener('alpine:init', () => {
 
 document.addEventListener('alpine:init', () => {
     Alpine.data('themeSwitcher', () => ({
-        darkMode: localStorage.getItem('darkMode') || 'dark', // Default to light mode
+        darkMode: localStorage.getItem('darkMode') || 'dark', // Default
 
         theme: 'red', // Default theme
         themes:[
@@ -110,22 +86,17 @@ document.addEventListener('alpine:init', () => {
             })
         },
 
-
         toggleDarkMode() {
             this.darkMode = this.darkMode === 'light' ? 'dark' : 'light';
-            localStorage.setItem('darkMode', this.darkMode); // Save preference to localStorage
+            localStorage.setItem('darkMode', this.darkMode); // Save to localStorage
             document.documentElement.classList.toggle('dark');
         },
 
         getMode(){
             const settedMode = localStorage.getItem('darkMode') ? this.darkMode = localStorage.getItem('darkMode') : this.darkMode = 'dark';
             if (settedMode == 'dark') {
-                console.log('dark');
-                
                 document.documentElement.classList.add('dark');
             }else{
-                console.log('light');
-                
                 document.documentElement.classList.remove('dark');
             }
         }
