@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en" x-data="themeSwitcher"  x-init="getTheme()" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jsh Rcngl</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+   
+    <style type="text/tailwindcss">
+        @custom-variant dark (&:where(.dark, .dark *));
+
+        .mulish {
+            font-family: "Mulish", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        html, body {
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --theme-color-50: #fef2f2;
+            --theme-color-100: #fee2e2;
+            --theme-color-200: #fecaca;
+            --theme-color-300: #fca5a5;
+            --theme-color-400: #f87171;
+            --theme-color-500: #ef4444;
+            --theme-color-600: #dc2626;
+            --theme-color-700: #b91c1c;
+            --theme-color-800: #991b1b;
+            --theme-color-900: #7f1d1d;
+            --theme-color-950: #450a0a;
+            
+        }
+
+       /* Theme: default */
+        [data-theme="rose"]{
+
+            --theme-color-50: #fff1f2;
+            --theme-color-100: #ffe4e6;
+            --theme-color-200: #fecdd3;
+            --theme-color-300: #fda4af;
+            --theme-color-400: #fb7185;
+            --theme-color-500: #f43f5e;
+            --theme-color-600: #e11d48;
+            --theme-color-700: #be123c;
+            --theme-color-800: #9f1239;
+            --theme-color-900: #881337;
+            --theme-color-950: #4c0519;
+        }
+
+        [data-theme="pink"]{
+
+            --theme-color-50: #fdf2f8;
+            --theme-color-100: #fce7f3;
+            --theme-color-200: #fbcfe8;
+            --theme-color-300: #f9a8d4;
+            --theme-color-400: #f472b6;
+            --theme-color-500: #ec4899;
+            --theme-color-600: #db2777;
+            --theme-color-700: #be185d;
+            --theme-color-800: #9d174d;
+            --theme-color-900: #831843;
+            --theme-color-950: #500724;
+        }
+
+        [data-theme="fuchsia"]{
+
+            --theme-color-50: #fdf4ff;
+            --theme-color-100: #fae8ff;
+            --theme-color-200: #f5d0fe;
+            --theme-color-300: #f0abfc;
+            --theme-color-400: #e879f9;
+            --theme-color-500: #d946ef;
+            --theme-color-600: #c026d3;
+            --theme-color-700: #a21caf;
+            --theme-color-800: #86198f;
+            --theme-color-900: #701a75;
+            --theme-color-950: #4a044e;
+        }
+
+        [data-theme="purple"]{
+
+            --theme-color-50: #faf5ff;
+            --theme-color-100: #f3e8ff;
+            --theme-color-200: #e9d5ff;
+            --theme-color-300: #d8b4fe;
+            --theme-color-400: #c084fc;
+            --theme-color-500: #a855f7;
+            --theme-color-600: #9333ea;
+            --theme-color-700: #7e22ce;
+            --theme-color-800: #6b21a8;
+            --theme-color-900: #581c87;
+            --theme-color-950: #3b0764;
+        }
+
+        [data-theme="violet"]{
+
+            --theme-color-50: #f5f3ff;
+            --theme-color-100: #ede9fe;
+            --theme-color-200: #ddd6fe;
+            --theme-color-300: #c4b5fd;
+            --theme-color-400: #a78bfa;
+            --theme-color-500: #8b5cf6;
+            --theme-color-600: #7c3aed;
+            --theme-color-700: #6d28d9;
+            --theme-color-800: #5b21b6;
+            --theme-color-900: #4c1d95;
+            --theme-color-950: #2e1065;
+        }
+
+        [data-theme="indigo"]{
+
+            --theme-color-50: #eef2ff;
+            --theme-color-100: #e0e7ff;
+            --theme-color-200: #c7d2fe;
+            --theme-color-300: #a5b4fc;
+            --theme-color-400: #818cf8;
+            --theme-color-500: #6366f1;
+            --theme-color-600: #4f46e5;
+            --theme-color-700: #4338ca;
+            --theme-color-800: #3730a3;
+            --theme-color-900: #312e81;
+            --theme-color-950: #1e1b4b;
+        }
+
+        [data-theme="blue"]{
+
+            --theme-color-50: #eff6ff;
+            --theme-color-100: #dbeafe;
+            --theme-color-200: #bfdbfe;
+            --theme-color-300: #93c5fd;
+            --theme-color-400: #60a5fa;
+            --theme-color-500: #3b82f6;
+            --theme-color-600: #2563eb;
+            --theme-color-700: #1d4ed8;
+            --theme-color-800: #1e40af;
+            --theme-color-900: #1e3a8a;
+            --theme-color-950: #172554;
+        }
+
+        [data-theme="cyan"]{
+
+            --theme-color-50: #ecfeff;
+            --theme-color-100: #cffafe;
+            --theme-color-200: #a5f3fc;
+            --theme-color-300: #67e8f9;
+            --theme-color-400: #22d3ee;
+            --theme-color-500: #06b6d4;
+            --theme-color-600: #0891b2;
+            --theme-color-700: #0e7490;
+            --theme-color-800: #155e75;
+            --theme-color-900: #164e63;
+            --theme-color-950: #083344;
+        }
+
+        [data-theme="teal"]{
+
+            --theme-color-50: #f0fdfa;
+            --theme-color-100: #ccfbf1;
+            --theme-color-200: #99f6e4;
+            --theme-color-300: #5eead4;
+            --theme-color-400: #2dd4bf;
+            --theme-color-500: #14b8a6;
+            --theme-color-600: #0d9488;
+            --theme-color-700: #0f766e;
+            --theme-color-800: #115e59;
+            --theme-color-900: #134e4a;
+            --theme-color-950: #042f2e;
+        }
+
+        [data-theme="emerald"]{
+
+            --theme-color-50: #ecfdf5;
+            --theme-color-100: #d1fae5;
+            --theme-color-200: #a7f3d0;
+            --theme-color-300: #6ee7b7;
+            --theme-color-400: #34d399;
+            --theme-color-500: #10b981;
+            --theme-color-600: #059669;
+            --theme-color-700: #047857;
+            --theme-color-800: #065f46;
+            --theme-color-900: #064e3b;
+            --theme-color-950: #022c22;
+        }
+
+        [data-theme="green"]{
+
+            --theme-color-50: #f0fdf4;
+            --theme-color-100: #dcfce7;
+            --theme-color-200: #bbf7d0;
+            --theme-color-300: #86efac;
+            --theme-color-400: #4ade80;
+            --theme-color-500: #22c55e;
+            --theme-color-600: #16a34a;
+            --theme-color-700: #15803d;
+            --theme-color-800: #166534;
+            --theme-color-900: #14532d;
+            --theme-color-950: #052e16;
+        }
+
+        [data-theme="lime"]{
+
+            --theme-color-50: #f7fee7;
+            --theme-color-100: #ecfccb;
+            --theme-color-200: #d9f99d;
+            --theme-color-300: #bef264;
+            --theme-color-400: #a3e635;
+            --theme-color-500: #84cc16;
+            --theme-color-600: #65a30d;
+            --theme-color-700: #4d7c0f;
+            --theme-color-800: #3f6212;
+            --theme-color-900: #365314;
+            --theme-color-950: #1d2d0d;
+        }
+
+        [data-theme="yellow"]{
+
+            --theme-color-50: #fefce8;
+            --theme-color-100: #fef9c3;
+            --theme-color-200: #fef08a;
+            --theme-color-300: #fde047;
+            --theme-color-400: #facc15;
+            --theme-color-500: #eab308;
+            --theme-color-600: #ca8a04;
+            --theme-color-700: #a16207;
+            --theme-color-800: #854d0e;
+            --theme-color-900: #713f12;
+            --theme-color-950: #422006;
+        }
+
+        [data-theme="amber"]{
+
+            --theme-color-50: #fffbeb;
+            --theme-color-100: #fef3c7;
+            --theme-color-200: #fde68a;
+            --theme-color-300: #fcd34d;
+            --theme-color-400: #fbbf24;
+            --theme-color-500: #f59e0b;
+            --theme-color-600: #d97706;
+            --theme-color-700: #b45309;
+            --theme-color-800: #92400e;
+            --theme-color-900: #78350f;
+            --theme-color-950: #451a03;
+        }
+
+        [data-theme="orange"]{
+
+            --theme-color-50: #fff7ed;
+            --theme-color-100: #ffedd5;
+            --theme-color-200: #fed7aa;
+            --theme-color-300: #fdba74;
+            --theme-color-400: #fb923c;
+            --theme-color-500: #f97316;
+            --theme-color-600: #ea580c;
+            --theme-color-700: #c2410c;
+            --theme-color-800: #9a3412;
+            --theme-color-900: #7c2d12;
+            --theme-color-950: #431407;
+        }
+
+        [data-theme="red"]{
+
+            --theme-color-50: #fef2f2;
+            --theme-color-100: #fee2e2;
+            --theme-color-200: #fecaca;
+            --theme-color-300: #fca5a5;
+            --theme-color-400: #f87171;
+            --theme-color-500: #ef4444;
+            --theme-color-600: #dc2626;
+            --theme-color-700: #b91c1c;
+            --theme-color-800: #991b1b;
+            --theme-color-900: #7f1d1d;
+            --theme-color-950: #450a0a;
+        }
+
+        [data-theme="neutral"]{
+
+            --theme-color-50: #fafafa;
+            --theme-color-100: #f5f5f5;
+            --theme-color-200: #e5e5e5;
+            --theme-color-300: #d4d4d4;
+            --theme-color-400: #a3a3a3;
+            --theme-color-500: #737373;
+            --theme-color-600: #525252;
+            --theme-color-700: #404040;
+            --theme-color-800: #262626;
+            --theme-color-900: #171717;
+            --theme-color-950: #0a0a0a;
+        }
+
+        [data-theme="gray"]{
+
+            --theme-color-50: #f9fafb;
+            --theme-color-100: #f3f4f6;
+            --theme-color-200: #e5e7eb;
+            --theme-color-300: #d1d5db;
+            --theme-color-400: #9ca3af;
+            --theme-color-500: #6b7280;
+            --theme-color-600: #4b5563;
+            --theme-color-700: #374151;
+            --theme-color-800: #1f2937;
+            --theme-color-900: #111827;
+            --theme-color-950: #030712;
+        }
+
+        [data-theme="slate"]{
+
+            --theme-color-50: #f8fafc;
+            --theme-color-100: #f1f5f9;
+            --theme-color-200: #e2e8f0;
+            --theme-color-300: #cbd5e1;
+            --theme-color-400: #94a3b8;
+            --theme-color-500: #64748b;
+            --theme-color-600: #475569;
+            --theme-color-700: #334155;
+            --theme-color-800: #1e293b;
+            --theme-color-900: #0f172a;
+            --theme-color-950: #020617;
+        }
+
+
+        .themeColorBg {
+            @apply 
+                bg-slate-200 
+                dark:bg-gray-800
+                p-2 
+                rounded-sm;
+        }
+
+        .navbar {
+            @apply 
+                dark:bg-gradient-to-r 
+                dark:from-[var(--theme-color-800)] 
+                dark:via-[var(--theme-color-800)] 
+                dark:to-gray-900 
+
+                bg-gradient-to-r 
+                from-[var(--theme-color-700)] 
+                via-[var(--theme-color-700)] 
+                to-[var(--theme-color-500)] 
+
+                text-gray-300 
+                py-4;
+        }
+
+        .container {
+            @apply 
+                mx-auto 
+                px-4 
+                max-w-screen-lg;
+        }
+
+        .section-black {
+            @apply 
+                py-20 
+                px-10 
+                /* dark */
+                dark:bg-gradient-to-r 
+                dark:from-gray-800 
+                dark:via-gray-800 
+                dark:to-gray-700 
+                /* light */
+                bg-gradient-to-r 
+                from-gray-100 
+                via-gray-200 
+                to-gray-500 
+                /* dark:to-gray-100 */
+                dark:text-gray-300
+                text-gray-700;
+        }
+ 
+        .section-red {
+            @apply 
+                py-20 
+                px-10 
+                dark:bg-gradient-to-r 
+                dark:from-[var(--theme-color-800)] 
+                dark:via-[var(--theme-color-800)] 
+                dark:to-gray-900 
+
+                bg-gradient-to-r 
+                from-[var(--theme-color-700)] 
+                via-[var(--theme-color-700)] 
+                to-[var(--theme-color-500)] 
+                
+                dark:text-gray-300
+                text-gray-300;
+        }
+
+        .section h2 {
+            @apply 
+                text-4xl 
+                font-bold 
+                mb-6;
+        }
+
+        .section p {
+            @apply 
+                text-lg 
+                leading-relaxed;
+        }
+
+        .btn {
+            @apply 
+                bg-[var(--theme-color-950)]
+                text-[var(--theme-color-100)] 
+                dark:bg-gray-900 
+                dark:text-[var(--theme-color-400)] 
+                font-bold 
+                py-2 
+                px-6 
+                rounded-sm 
+                shadow-lg 
+                hover:bg-gray-700 
+                hover:text-[var(--theme-color-300)] 
+                ;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none; /* IE and Edge */   
+            scrollbar-width: none; /* Firefox */    
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, and Opera */   
+        }  
+    </style>
+     
+</head>
+<body :class="theme" class=" mulish"   x-init="getMode()" >
+    <div class="min-h-screen max-h-screen mt-0">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="container flex justify-between items-center">
+                <div class="brand-name text-3xl font-bold">
+                    My Portfolio
+                </div>
+                <div class="rounded-full inline-flex p-1 px-3 text-gray-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
+                    </svg>
+                    <span class="ml-1 text-sm">Php Web Developer</span>
+                </div>
+                <!-- Theme Switcher Dropdown -->
+                <div class="relative">
+                    <button @click="toggleDropdown" class="md:btn bg-gray-800 p-2 rounded-sm text-[var(--theme-color-400)] flex items-center md:space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                            <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clip-rule="evenodd" />
+                          </svg>
+                          
+                        <span class="hidden md:block">Select Themes</span>
+                    </button>
+                    <div x-show="dropdownOpen" @click.away="dropdownOpen = false" class="absolute right-0 mt-2 w-50 bg-gray-800 text-gray-300 rounded shadow-lg m-auto">
+                        <div class="grid grid-cols-4 gap-3 p-3 w-full">
+                            
+                            <template x-for="(xtheme , xKey) in themes" :key="xKey">
+                                <div class="mb-1">
+                                    <div @click="setTheme(xtheme.value)" class="w-8 h-8 rounded-sm  cursor-pointer" :class="'bg-['+xtheme.color+']' + ' shadow-sm shadow-[var(--theme-color-700)]  hover:shadow-slate-500'" ></div>
+                                    <span  class="text-center text-xs" x-text="xtheme.name"></span>
+                                </div>
+                                
+                            </template>
+
+                            <hr class="col-span-4 my-2 border-gray-700">
+
+                            <button 
+                                @click="toggleDarkMode" 
+                                class="col-span-4 px-4 py-2 text-sm bg-gray-800 text-white rounded-md shadow-md hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-300 transition"
+                            >
+                                <span x-text="darkMode == 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'"></span>
+                            </button>
+                        </div>
+
+                        
+                   
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero section-red section">
+            <div class="container h-80 ">
+                <h1 class="text-5xl font-bold mb-4 mt-8">Hi, I'm Joshua</h1>
+                <p class="text-xl mb-6">
+                    A Passionate <span class="font-semibold dark:text-[var(--theme-color-400)] text-[var(--theme-color-100)] ">PHP Web Developer</span> 
+                    Crafting Modern and Scalable Web Solutions
+                    <br>!! move About Me Content Here and add more  detatails about my self 
+                </p>
+                <a href="#projects" class="btn">
+                    View My Work
+                </a>
+            </div>
+        </div>
+
+
+         <!-- Work Experience Section -->
+         <section id="work-experience" class="section-black section">
+            <div class="container mx-auto">
+                <h4 class="text-lg font-bold mb-6 text-start">Work Experience</h4>
+                <h2>Companies I have worked for in the past.</h2>
+                <div class="grid md:grid-cols-3  space-y-9 pt-5 gap-8">
+                    <div>
+                        <h3 class="text-3xl font-bold">Software Engineer L3</h3>
+                        <p class="dark:text-gray-400 text-gray-600 text-[8pt] italic">Equitable Computer Services, Inc, <br> March 21, 2022 to Current</p>
+                        <p class="mt-4">
+                            I am currently working as a Senior/Lead Deveoper and responsible for developing and maintaining web applications for clients,
+                            guiding and supporting our teams junior developers.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Back-End Developer</h3>
+                        <p class="dark:text-gray-400 text-gray-600 text-[8pt] italic">Gleent Oncorporation - August 2021 to November 2021</p>
+                        <p class="mt-4">
+                            I've worked on project that involves developing and maintaining the back-end of web applications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-black section">
+            <div class="container mx-auto">
+                <div class="grid md:grid-cols-3 gap-4 ">
+                    
+                    <div class="mb-8 md:mb-4 mr-5">
+                        <h4 class="text-4xl font-bold mb-6 text-start">Skills</h4>
+                        <!-- <h2>Skills</h2> -->
+                        <!-- <h4 class="text-lg font-bold">Programming Languages</h4> -->
+                        <!-- <small class="dark:text-gray-400 text-gray-600 text-[1rem] italic">PHP, JavaScript, C#</small> -->
+                        <p class="mt-4 ">
+                            In years of experience, I have developed a strong foundation in programming languages in web development.
+                            I am confident in my ability to write clean, efficient, and scalable code using these languages.
+                            <!-- I am proficient in PHP, JavaScript, and Python. I have experience in developing web applications using these languages. -->
+                        </p>
+                    </div>
+
+                    <div class="col-span-2">
+
+                        <div class="grid md:grid-cols-2 gap-3 ">
+
+                            <div>
+
+                                <div class="mb-8">
+                                    <h4 class="text-4xl font-bold mb-6 text-start ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9">
+                                            <path fill-rule="evenodd" d="M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75ZM4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd" />
+                                            <path d="m10.076 8.64-2.201-2.2V4.874a.75.75 0 0 0-.364-.643l-3.75-2.25a.75.75 0 0 0-.916.113l-.75.75a.75.75 0 0 0-.113.916l2.25 3.75a.75.75 0 0 0 .643.364h1.564l2.062 2.062 1.575-1.297Z" />
+                                            <path fill-rule="evenodd" d="m12.556 17.329 4.183 4.182a3.375 3.375 0 0 0 4.773-4.773l-3.306-3.305a6.803 6.803 0 0 1-1.53.043c-.394-.034-.682-.006-.867.042a.589.589 0 0 0-.167.063l-3.086 3.748Zm3.414-1.36a.75.75 0 0 1 1.06 0l1.875 1.876a.75.75 0 1 1-1.06 1.06L15.97 17.03a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                          </svg>
+                                    </h4>
+                                    <h4 class="text-2xl font-bold">Maintainability</h4>
+                                    <p>
+                                        Working on project that involves developing and maintaining the back-end of web applications.
+                                    </p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h4 class="text-4xl font-bold mb-6 text-start ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9">
+                                            <path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z" clip-rule="evenodd" />
+                                          </svg>
+                                          
+                                    </h4>
+                                    <h4 class="text-2xl font-bold">Dynamic Web Application</h4>
+                                    <p>
+                                        Building interactive and scalable web applications that deliver personalized user experiences.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div>
+
+                                <div class="mb-8">
+                                    <h4 class="text-4xl font-bold mb-6 text-start ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9">
+                                            <path fill-rule="evenodd" d="M12 5.25c1.213 0 2.415.046 3.605.135a3.256 3.256 0 0 1 3.01 3.01c.044.583.077 1.17.1 1.759L17.03 8.47a.75.75 0 1 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l3-3a.75.75 0 0 0-1.06-1.06l-1.752 1.751c-.023-.65-.06-1.296-.108-1.939a4.756 4.756 0 0 0-4.392-4.392 49.422 49.422 0 0 0-7.436 0A4.756 4.756 0 0 0 3.89 8.282c-.017.224-.033.447-.046.672a.75.75 0 1 0 1.497.092c.013-.217.028-.434.044-.651a3.256 3.256 0 0 1 3.01-3.01c1.19-.09 2.392-.135 3.605-.135Zm-6.97 6.22a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.752-1.751c.023.65.06 1.296.108 1.939a4.756 4.756 0 0 0 4.392 4.392 49.413 49.413 0 0 0 7.436 0 4.756 4.756 0 0 0 4.392-4.392c.017-.223.032-.447.046-.672a.75.75 0 0 0-1.497-.092c-.013.217-.028.434-.044.651a3.256 3.256 0 0 1-3.01 3.01 47.953 47.953 0 0 1-7.21 0 3.256 3.256 0 0 1-3.01-3.01 47.759 47.759 0 0 1-.1-1.759L6.97 15.53a.75.75 0 0 0 1.06-1.06l-3-3Z" clip-rule="evenodd" />
+                                          </svg>
+                                    </h4>
+                                    <h4 class="text-2xl font-bold">Clean and Reusable Coding</h4>
+                                    <p>
+                                        Writing clean, efficient, and reusable code to ensure maintainability and scalability of web applications.
+                                    </p>
+                                </div>
+
+
+                                <div class="mb-4">
+                                    <h4 class="text-4xl font-bold mb-6 text-start ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9">
+                                            <path fill-rule="evenodd" d="M15.22 6.268a.75.75 0 0 1 .968-.431l5.942 2.28a.75.75 0 0 1 .431.97l-2.28 5.94a.75.75 0 1 1-1.4-.537l1.63-4.251-1.086.484a11.2 11.2 0 0 0-5.45 5.173.75.75 0 0 1-1.199.19L9 12.312l-6.22 6.22a.75.75 0 0 1-1.06-1.061l6.75-6.75a.75.75 0 0 1 1.06 0l3.606 3.606a12.695 12.695 0 0 1 5.68-4.974l1.086-.483-4.251-1.632a.75.75 0 0 1-.432-.97Z" clip-rule="evenodd" />
+                                          </svg>
+                                          
+                                    </h4>
+                                    <h4 class="text-2xl font-bold">Optimized Performance</h4>
+                                    <p>
+                                        Developing web applications with a focus on speed, efficiency, and optimized performance to enhance user satisfaction and engagement.
+                                    </p>
+                                </div>
+
+
+                            </div>
+
+                            
+
+                        </div>
+
+                    </div>
+
+                 </div>
+                
+              
+            </div>
+        </section>
+
+
+
+        <!-- About Section -->
+        <!-- <section id="about" class="section-black section">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-6 text-center">About Me</h2>
+
+                <p>
+                    I am a passionate web developer with expertise in PHP, JavaScript, MySQL, and frameworks like CodeIgniter and Laravel. 
+                    I specialize in creating modern, scalable, and user-friendly web applications that solve real-world problems.
+                </p>
+            </div>
+        </section> -->
+
+        <!-- Skills Section -->
+        <!-- <section id="skills" class="section-black section">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-6 text-center">Skills</h2>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Programming Languages, Database, Libraries and Framworks</h3>
+                </div>
+                <div class="grid grid-cols-3 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <p class="font-semibold">PHP</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-5/5"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-semibold">MySQL</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-semibold">Boostrap</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-semibold">JQuery</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-semibold">JavaScript</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/4"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="font-semibold">CSS</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-semibold">Tailwindcss</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-semibold">Laravel</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/5"></div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-semibold">NodeJS</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/5"></div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-semibold">NextJS</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/5"></div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="font-semibold">React</p>
+                        <div class="bg-gray-700 h-2 rounded-full">
+                            <div class="bg-[var(--theme-color-500)]  h-2 rounded-full w-3/5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+       
+        <!-- Projects Section -->
+        <section id="projects" class="section-black section">
+            <div class="container mx-auto">
+                <!-- <h2 class="text-4xl font-bold mb-6 text-center">Projects</h2> -->
+                <h4 class="text-lg font-bold mb-6 text-start">Projects</h4>
+                <h2>Projects that I have worked in the past.</h2>
+                <div x-data="carousel" class="relative">
+                    <!-- Carousel Wrapper -->
+                    <div 
+                        class="flex overflow-x-auto snap-x snap-mandatory space-x-6 scrollbar-hide"
+                        x-ref="carousel"
+                    >
+                        <!-- Loop through the projects and render them -->
+                        <template x-for="(project, index) in projects" :key="index">
+                            <div
+                                class="snap-center flex-shrink-0 dark:bg-gray-800 bg-slate-100 p-6 rounded-lg shadow-md w-80 md:w-96 transform transition-transform duration-300"
+                                :class="activeSlide === index ? 'scale-100' : 'scale-90 opacity-50'"
+                                x-on:click="scrollToSlide(index)"
+                            >
+                                <h3 class="text-2xl font-semibold mb-2" x-text="project.name"></h3>
+                                <p class="dark:text-gray-400 text-gray-700 mb-4" x-text="project.description"></p>
+                                <ul class="text-sm dark:text-gray-300 text-gray-600 mb-4">
+                                    <li><strong>Language:</strong> <span x-text="project.language"></span></li>
+                                    <li><strong>Database:</strong> <span x-text="project.database"></span></li>
+                                    <li><strong>Status:</strong> <span :class="project.statusColor" x-text="project.status"></span></li>
+                                </ul>
+                                <a href="#" class="btn dark:shadow dark:shadow-[var(--theme-color-700)]">View Project</a>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-center space-x-4 mt-6">
+                        <template x-for="(project, index) in projects" :key="index">
+                            <button
+                                class="w-4 h-4 rounded-full"
+                                :class="activeSlide === index ? 'bg-[var(--theme-color-500)] ' : 'bg-gray-500'"
+                                x-on:click="scrollToSlide(index)"
+                            ></button>
+                        </template>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- Contact Me Section -->
+        <section id="contact" class="section-red section">
+            <div class="container mx-auto">
+                <!-- <h2 class="text-4xl font-bold mb-6 text-center">Contact Me</h2> -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Left Side: Contact Information -->
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold">Get in Touch</h3>
+                        <p>If you have any questions or want to work together, feel free to reach out!</p>
+                        <div>
+                            <p><strong>Email:</strong> jsh24.rcngl@gmail.com</p>
+                            <p><strong>Phone:</strong> (+63)946-995-0709</p>
+                            <p><strong>Location:</strong> San Carlos City, Pangasinan</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mt-4 mb-1">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-300 hover:text-[var(--theme-color-400)] ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                                        <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.796.715-1.796 1.763v2.31h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.324-.593 1.324-1.324V1.325C24 .593 23.407 0 22.675 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-[var(--theme-color-400)] ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.76-1.605-2.665-.305-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.81 1.096.81 2.21 0 1.595-.015 2.88-.015 3.27 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-[var(--theme-color-400)] ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                                        <path d="M24 4.56v14.91c0 2.52-2.05 4.57-4.57 4.57H4.57C2.05 24 0 21.95 0 19.43V4.57C0 2.05 2.05 0 4.57 0h14.91C21.95 0 24 2.05 24 4.57zM9.54 19.43v-8.57H6.86v8.57h2.68zm-1.34-9.77c.86 0 1.57-.71 1.57-1.57s-.71-1.57-1.57-1.57-1.57.71-1.57 1.57.71 1.57 1.57 1.57zm11.43 9.77v-4.57c0-2.05-1.71-3.77-3.77-3.77-1.14 0-2.14.57-2.71 1.43h-.14v-1.14h-2.68v8.57h2.68v-4.57c0-.86.71-1.57 1.57-1.57s1.57.71 1.57 1.57v4.57h2.68z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Contact Form -->
+                    <div>
+                        <form action="#" method="POST" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium">Name</label>
+                                <input type="text" id="name" name="name" class="w-full p-2 rounded dark:bg-gray-800 bg-gray-700 text-[var(--theme-color-400)] " autocomplete="off" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium">Email</label>
+                                <input type="email" id="email" name="email" class="w-full p-2 rounded dark:bg-gray-800 bg-gray-700 text-[var(--theme-color-400)] " autocomplete="off" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full p-2 rounded dark:bg-gray-800 bg-gray-700 text-[var(--theme-color-400)] " autocomplete="off" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('carousel', () => ({
+                activeSlide: 0,
+                projects: [
+                    { name: 'Project Name 1', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'PHP, JavaScript', database: 'MySQL', status: 'Up', statusColor: 'text-green-400' },
+                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
+                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
+                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
+                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
+                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
+                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
+                    { name: 'Project Name 2', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Python, Django', database: 'PostgreSQL', status: 'On Development', statusColor: 'text-yellow-400' },
+                    { name: 'Project Name 3', description: 'This is a brief description of the project. It highlights the purpose and features of the project.', language: 'Java, Spring Boot', database: 'MongoDB', status: 'Down', statusColor: 'text-[var(--theme-color-400)] ' }
+                ],
+        
+                
+                scrollToSlide(index) {
+                    this.activeSlide = index;
+                    const carousel = this.$refs.carousel;
+                    const itemWidth = carousel.children[index].offsetWidth; // Width of each slide
+                    const containerWidth = carousel.offsetWidth; // Container width
+    
+                    // Scroll to the calculated position to center the clicked item
+                    const scrollLeft = itemWidth * index - (containerWidth / 2) + (itemWidth / 2);
+    
+                    const xscrollLeft = (index == this.projects.length - 1) ? scrollLeft  + itemWidth : scrollLeft
+
+                    // Scroll to the calculated position
+                    carousel.scrollTo({
+                        left: xscrollLeft,
+                        behavior: 'smooth'
+                    });
+                },
+        
+                updateActiveSlide() {
+                    const carousel = this.$refs.carousel;
+                    const items = carousel.children;
+                    const containerWidth = carousel.offsetWidth;
+        
+                    let closestIndex = 0;
+                    let closestDistance = Infinity;
+        
+                    // Loop through the items to determine the closest item to the center
+                    Array.from(items).forEach((item, index) => {
+                        const itemLeft = item.offsetLeft;
+                        const itemRight = itemLeft + item.offsetWidth;
+                        const itemCenter = (itemLeft + itemRight) / 2;
+                        const containerCenter = containerWidth / 2;
+                        const distance = Math.abs(itemCenter - containerCenter);
+        
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestIndex = index;
+                        }
+                    });
+        
+                    // Update active slide based on closest item
+                    this.activeSlide = closestIndex;
+                }
+            }));
+        });
+
+    </script>
+ 
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('themeSwitcher', () => ({
+            darkMode: localStorage.getItem('darkMode') || 'dark', // Default to light mode
+
+            theme: 'red', // Default theme
+            themes:[
+                { name: 'Rose', value: 'rose', color: '#9f1239' },
+                { name: 'Pink', value: 'pink', color: '#9d174d' },
+                { name: 'Fuchsia', value: 'fuchsia', color: '#86198f' },
+                { name: 'Purple', value: 'purple', color: '#6b21a8' },
+                { name: 'Violet', value: 'violet', color: '#5b21b6' },
+                { name: 'Indigo', value: 'indigo', color: '#3730a3' },
+                { name: 'Blue', value: 'blue', color: '#1e40af' },
+                { name: 'Cyan', value: 'cyan', color: '#155e75' },
+                { name: 'Teal', value: 'teal', color: '#115e59' },
+                { name: 'Emerald', value: 'emerald', color: '#065f46' },
+                { name: 'Green', value: 'green', color: '#166534' },
+                { name: 'Lime', value: 'lime', color: '#3f6212' },
+                { name: 'Yellow', value: 'yellow', color: '#854d0e' },
+                { name: 'Amber', value: 'amber', color: '#92400e' },
+                { name: 'Orange', value: 'orange', color: '#9a3412' },
+                { name: 'Red', value: 'red', color: '#991b1b' },
+                { name: 'Neutral', value: 'neutral', color: '#262626' },
+                { name: 'Gray', value: 'gray', color: '#1f2937' },
+                { name: 'Slate', value: 'slate', color: '#1e293b' }
+            ],
+
+            dropdownOpen: false,
+
+            toggleDropdown() {
+                this.dropdownOpen = !this.dropdownOpen;
+            },
+
+            setTheme(color) {
+                this.theme = color;
+                document.documentElement.setAttribute('data-theme', color);
+                localStorage.setItem('theme', color);
+            },
+
+            getTheme (){
+                const settedTheme = localStorage.getItem('theme') ? this.theme = localStorage.getItem('theme') : this.theme ;
+
+                this.themes.map((theme) => {
+                    if(theme.value == settedTheme){
+                        document.documentElement.setAttribute('data-theme', settedTheme);
+                    }
+                })
+            },
+
+
+            toggleDarkMode() {
+                this.darkMode = this.darkMode === 'light' ? 'dark' : 'light';
+                localStorage.setItem('darkMode', this.darkMode); // Save preference to localStorage
+                document.documentElement.classList.toggle('dark');
+            },
+
+            getMode(){
+                const settedMode = localStorage.getItem('darkMode') ? this.darkMode = localStorage.getItem('darkMode') : this.darkMode = 'dark';
+                if (settedMode == 'dark') {
+                    console.log('dark');
+                    
+                    document.documentElement.classList.add('dark');
+                }else{
+                    console.log('light');
+                    
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+
+            
+        }));
+    });
+</script>
+</body>
+</html>
